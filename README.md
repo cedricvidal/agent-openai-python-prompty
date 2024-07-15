@@ -60,7 +60,7 @@ This project template provides the following features:
 * **Azure account**. If you're new to Azure, [get an Azure account for free](https://azure.microsoft.com/free/cognitive-search/) and you'll get some free Azure credits to get started. See [guide to deploying with the free trial](docs/deploy_lowcost.md).
 * **Azure subscription with access enabled for the Azure OpenAI Service**. You can request access with [this form](https://aka.ms/oaiapply). If your access request to Azure OpenAI Service doesn't match the [acceptance criteria](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access?context=%2Fazure%2Fcognitive-services%2Fopenai%2Fcontext%2Fcontext), you can use [OpenAI public API](https://platform.openai.com/docs/api-reference/introduction) instead.
     - Ability to deploy `gpt-35-turbo-0613`, `gpt-4-1106-Preview`, and `gpt-4-0613`.
-    - We recommend using France Central, as this region has access to all models and services required. 
+    - We recommend using East US 2 `eastus2`, as this region has access to all models and services required. 
 * **Azure subscription with access enabled for [Bing Search API](https://www.microsoft.com/en-us/bing/apis/bing-web-search-api)**
 * **Azure subscription with access enabled for [Azure AI Search](https://azure.microsoft.com/en-gb/products/ai-services/ai-search)**
 
@@ -88,7 +88,7 @@ The easiest way to get started is GitHub Codespaces, since it will setup all the
     azd up
     ```
 
-    This project uses `gpt-35-turbo-0613`, `gpt-4-1106-Preview` and `gpt-4-0613`which may not be available in all Azure regions. Check for [up-to-date region availability](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#standard-deployment-model-availability) and select a region during deployment accordingly. For this project we recommend France Central.
+    This project uses `gpt-35-turbo-0613`, `gpt-4-1106-Preview` and `gpt-4-0613`which may not be available in all Azure regions. Check for [up-to-date region availability](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#standard-deployment-model-availability) and select a region during deployment accordingly. For this project we recommend East US 2.
 
 5. Install the necessary Python packages:
 
