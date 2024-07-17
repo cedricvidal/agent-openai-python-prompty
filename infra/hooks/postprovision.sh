@@ -11,7 +11,7 @@ acr_build () {
     docker_file=$5
     image_fqn="${AZURE_CONTAINER_REGISTRY_NAME}.azurecr.io/${image_name}"
     echo  "Building ${image_name} using ${src_dir} ..."
-    az acr build --subscription ${AZURE_SUBSCRIPTION_ID} --registry ${AZURE_CONTAINER_REGISTRY_NAME} --image ${image_name} --file ${docker_file} ${src_dir}
+    az acr build --subscription ${AZURE_SUBSCRIPTION_ID} --registry ${AZURE_CONTAINER_REGISTRY_NAME} --image ${image_name} --file ${src_dir}/${docker_file} ${src_dir}
     az containerapp update --subscription ${AZURE_SUBSCRIPTION_ID} --name ${aca_name} --resource-group ${AZURE_RESOURCE_GROUP} --image ${image_fqn}
     az containerapp ingress update --subscription ${AZURE_SUBSCRIPTION_ID} --name ${aca_name} --resource-group ${AZURE_RESOURCE_GROUP} --target-port ${target_port}
 }
