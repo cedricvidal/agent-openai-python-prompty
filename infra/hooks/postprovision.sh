@@ -8,15 +8,17 @@ acr_build () {
     aca_name=$2
     src_dir=$3
     target_port=$4
+    docker_file=$5
     image_fqn="${AZURE_CONTAINER_REGISTRY_NAME}.azurecr.io/${image_name}"
     echo  "Building ${image_name} using ${src_dir} ..."
-    az acr build --subscription ${AZURE_SUBSCRIPTION_ID} --registry ${AZURE_CONTAINER_REGISTRY_NAME} --image ${image_name} ${src_dir}
+    az acr build --subscription ${AZURE_SUBSCRIPTION_ID} --registry ${AZURE_CONTAINER_REGISTRY_NAME} --image ${image_name} --file ${docker_file} ${src_dir}
     az containerapp update --subscription ${AZURE_SUBSCRIPTION_ID} --name ${aca_name} --resource-group ${AZURE_RESOURCE_GROUP} --image ${image_fqn}
     az containerapp ingress update --subscription ${AZURE_SUBSCRIPTION_ID} --name ${aca_name} --resource-group ${AZURE_RESOURCE_GROUP} --target-port ${target_port}
 }
 
-acr_build creativeagentapi:latest ${API_SERVICE_ACA_NAME} ./src/api/ 5000
-acr_build creativeagentweb:latest ${WEB_SERVICE_ACA_NAME} ./src/web/ 80
+acr_build creativeagentapi:latest ${API_SERVICE_ACA_NAME} ./src/api/ 5000 Dockerfile-fat
+#acr_build creativeagentapi:latest ${API_SERVICE_ACA_NAME} ./src/api/ 5000 Dockerfile
+#acr_build creativeagentweb:latest ${WEB_SERVICE_ACA_NAME} ./src/web/ 80 Dockerfile
 
 # Retrieve service names, resource group name, and other values from environment variables
 resourceGroupName=$AZURE_RESOURCE_GROUP
